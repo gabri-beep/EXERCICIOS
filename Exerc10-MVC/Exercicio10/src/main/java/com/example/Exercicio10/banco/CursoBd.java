@@ -1,5 +1,6 @@
 package com.example.Exercicio10.banco;
 
+import com.example.Exercicio10.model.Aluno;
 import com.example.Exercicio10.model.Curso;
 import com.example.Exercicio10.model.Professor;
 
@@ -8,6 +9,8 @@ import java.util.List;
 
 public class  CursoBd {
     private List<Curso> cursos;
+
+    private List<Aluno> alunos;
 
     public CursoBd(){
         this.cursos = new ArrayList<>();
@@ -46,8 +49,17 @@ public class  CursoBd {
     //insere um curso
     public boolean insert(Curso curso){
         cursos.add(curso);
+
         return true;
     }
+
+    public boolean insertAluno(Aluno aluno) {
+        alunos.add(aluno);
+
+        return true;
+    }
+
+
 
     //atualiza um curso pelo id
     public boolean update(Long idCurso, Curso curso){
@@ -77,4 +89,6 @@ public class  CursoBd {
         cursos.remove(cursoBd);
         return  true;
     }
+
+
 }

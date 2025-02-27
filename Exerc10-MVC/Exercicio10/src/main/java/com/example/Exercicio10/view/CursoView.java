@@ -1,10 +1,9 @@
 package com.example.Exercicio10.view;
 
 import com.example.Exercicio10.controller.CursoController;
+import com.example.Exercicio10.model.Aluno;
 import com.example.Exercicio10.model.Curso;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/curso")
@@ -12,9 +11,8 @@ public class CursoView {
     CursoController cursoController = new CursoController();
 
     @GetMapping()
-    public List<Curso> getAll(@RequestParam(required = false)String nomeProfessor,
-                              @RequestParam(required = false)Integer numeroSala) {
-
+    public Object getAll(@RequestParam(required = false)String nomeProfessor,
+                         @RequestParam(required = false)Integer numeroSala) {
         if (nomeProfessor != null){
             return cursoController.getByNomeProfessor(nomeProfessor);
         } else if (numeroSala != null) {
@@ -22,7 +20,6 @@ public class CursoView {
         }else {
             return cursoController.getAll();
         }
-
     }
 
     @GetMapping("/{idCurso}")
@@ -33,8 +30,16 @@ public class CursoView {
 
 
     @PostMapping
-    public boolean insert(@RequestBody Curso Curso) {
-        return cursoController.insertBanco(Curso);
+    public boolean insert(@RequestBody Curso curso){
+
+        return cursoController.insertBanco(curso);
+
+    }
+
+    @PostMapping("/aluno")
+    public boolean insertAluno(@RequestBody Aluno aluno, Curso curso){
+
+        return cursoController.insertAluno(aluno);
     }
 
     @PutMapping("/{idCurso}")

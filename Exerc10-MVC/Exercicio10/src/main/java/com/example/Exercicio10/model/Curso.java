@@ -9,8 +9,10 @@ public class Curso {
 
     private ArrayList<Aluno> alunos = new ArrayList<>();
 
+
     private Professor professor;
 
+    public Curso(){}
     public Curso(Long idCurso, String nome, int numeroSala, ArrayList<Aluno> alunos, Professor professor) {
         this.idCurso = idCurso;
         this.nome = nome;
