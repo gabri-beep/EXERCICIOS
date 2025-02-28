@@ -53,10 +53,10 @@ public class  CursoBd {
         return true;
     }
 
-    public boolean insertAluno(Aluno aluno) {
+    public Aluno insertAluno(Aluno aluno) {
         alunos.add(aluno);
 
-        return true;
+        return aluno;
     }
 
 

@@ -28,7 +28,7 @@ public class CursoController {
     public boolean insertBanco(Curso curso){
         return repository.insert(curso);
     }
-    public boolean insertAluno(Aluno aluno) {
+    public Aluno insertAluno(Aluno aluno) {
         return repository.insertAluno(aluno);
     }
 

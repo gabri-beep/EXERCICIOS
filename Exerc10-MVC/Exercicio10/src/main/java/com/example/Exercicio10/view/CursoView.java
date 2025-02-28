@@ -37,7 +37,7 @@ public class CursoView {
     }
 
     @PostMapping("/aluno")
-    public boolean insertAluno(@RequestBody Aluno aluno, Curso curso){
+    public Aluno insertAluno(@RequestBody Aluno aluno, Curso curso){
 
         return cursoController.insertAluno(aluno);
     }
