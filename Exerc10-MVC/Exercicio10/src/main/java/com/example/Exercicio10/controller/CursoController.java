@@ -28,8 +28,10 @@ public class CursoController {
     public boolean insertBanco(Curso curso){
         return repository.insert(curso);
     }
-    public Aluno insertAluno(Aluno aluno) {
-        return repository.insertAluno(aluno);
+
+    public Curso insertAluno(Long idCurso, Aluno aluno){
+        Curso curso = repository.getByIdCurso(idCurso);
+        return repository.insertAluno(curso, aluno);
     }
 
     public  Curso update(Long idCurso, Curso curso ){
@@ -40,6 +42,11 @@ public class CursoController {
         }
         return null;
     }
+
+    public boolean updateAluno(int idCurso, int idAluno, Aluno aluno){
+        return repository.updateAluno(idCurso, idAluno, aluno);
+    }
+
 
     public boolean delete(Long idCurso){
        return repository.delete(idCurso);

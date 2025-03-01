@@ -36,15 +36,20 @@ public class CursoView {
 
     }
 
-    @PostMapping("/aluno")
-    public Aluno insertAluno(@RequestBody Aluno aluno, Curso curso){
 
-        return cursoController.insertAluno(aluno);
+    @PostMapping("/{idCurso}/aluno")
+    public Curso insertAluno(@RequestBody Aluno aluno, @PathVariable Long idCurso){
+        return cursoController.insertAluno(idCurso, aluno);
     }
 
     @PutMapping("/{idCurso}")
     public Curso update(@RequestBody Curso curso, @PathVariable Long idCurso ) {
         return cursoController.update(idCurso, curso );
+    }
+
+    @PutMapping("/{idCurso}/aluno/{idAluno}")
+    public boolean update(@PathVariable int idCurso, @PathVariable int idAluno, @RequestBody Aluno aluno){
+        return cursoController.updateAluno(idCurso, idAluno, aluno);
     }
 
     @DeleteMapping("/{idCurso}")

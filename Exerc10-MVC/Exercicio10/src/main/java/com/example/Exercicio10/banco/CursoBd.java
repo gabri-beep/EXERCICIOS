@@ -53,10 +53,10 @@ public class  CursoBd {
         return true;
     }
 
-    public Aluno insertAluno(Aluno aluno) {
-        alunos.add(aluno);
-
-        return aluno;
+    // insere um novo aluno em um curso
+    public Curso insertAluno(Curso curso, Aluno aluno){
+        curso.getAlunos().add(aluno);
+        return curso;
     }
 
 
@@ -73,6 +73,33 @@ public class  CursoBd {
         cursoBd.setNome(curso.getNome());
 
         return true;
+    }
+
+    //atualiza um aluno pelo id do curso e do aluno
+    public boolean updateAluno(int idCurso, int idAluno, Aluno aluno){
+        Curso cursoBd = cursos.stream()
+                .filter(curso -> curso.getIdCurso() == idCurso)
+                .findFirst()
+                .orElse(null);
+
+        if (cursoBd == null){
+            return false;
+        }
+
+        Aluno alunoBd = cursoBd.getAlunos().stream()
+                .filter(a -> a.getIdAluno() == idAluno)
+                .findFirst()
+                .orElse(null);
+
+        if(cursoBd == null){
+            return false;
+        }
+
+        alunoBd.setNome(aluno.getNome());
+        alunoBd.setCpf(aluno.getCpf());
+
+        return true;
+
     }
 
     //deleta um curso pelo id
