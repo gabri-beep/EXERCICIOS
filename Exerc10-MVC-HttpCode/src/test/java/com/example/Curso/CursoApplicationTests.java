@@ -1,10 +1,10 @@
-package com.example.exercicio10_StatusCode;
+package com.example.Curso;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class Exercicio10StatusCodeApplicationTests {
+class CursoApplicationTests {
 
 	@Test
 	void contextLoads() {
