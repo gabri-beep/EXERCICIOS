@@ -1,18 +1,15 @@
-/* var myImage = document.querySelector("img");
+let formData = {
+  nome: document.getElementById('nome').value,
+  valor: parseFloat(document.getElementById('valor')),
+  saldo: (document.getElementById('saldo')),
+  saldoMinimo: document.getElementById('saldoMinimo')
+}
 
-fetch("flowers.jpg")
-  .then(function (response) {
-    return response.blob();
-  })
-  .then(function (myBlob) {
-    var objectURL = URL.createObjectURL(myBlob);
-    myImage.src = objectURL;
-  }); */
 
-  const response = await fetch("localhost:8080/produto", {
-    method: "POST",
-    body: JSON.stringify({ username: "example" }),
-    // ...
-  });
-  
-  
+const response = await fetch("http://localhost:8080/produto", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify(produto),
+})

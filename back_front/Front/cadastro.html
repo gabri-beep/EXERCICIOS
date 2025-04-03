@@ -7,31 +7,32 @@
     <title>Cadastro de Produto</title>
 </head>
 <body>
-    <div class="cadastro">
-        <h1>Cadastrar produto</h1>
+    <form id="produtoForm"> 
+        <div class="cadastro">
+            <h1>Cadastrar produto</h1>
+            <hr>
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" placeholder="Nome do produto">
+            <br>
+            <br>
+            <label for="valor">Valor:</label>
+            <input type="number" id="valor" placeholder="Digite o valor do produto ">
+            <br>
+            <br>
+            <label for="saldo">Saldo:</label>
+            <input type="number" id="saldo" >
+            <br>
+            <br>
+            <label for="saldoMin">Saldo Mínimo:</label>
+            <input type="number" id="saldoMin">
+            <br>
+            <button type="submit">Enviar</button>
+        </div>
         <hr>
-        <label for="inputNome">Nome:</label>
-        <input type="text" id="inputNome" placeholder="Nome do produto">
-        <br>
-        <br>
-        <label for="inputValor">Valor:</label>
-        <input type="number" id="inputValor" placeholder="Digite o valor do produto ">
-        <br>
-        <br>
-        <label for="inputSaldo">Saldo:</label>
-        <input type="number" id="inputSaldo" >
-        <br>
-        <br>
-        <label for="inputSaldoMin">Saldo Mínimo:</label>
-        <input type="number" id="inputSaldoMin">
-        <br>
-        <button>Enviar</button>
-    </div>
-    <hr>
-    <div class="lista">
-        <h1>Lista de produtos</h1>
-        <button>Carregar produtos</button>
-    </div>
-    
+        <div class="lista">
+            <h1>Lista de produtos</h1>
+            <button>Carregar produtos</button>
+        </div>
+    </form
 </body>
 </html>
