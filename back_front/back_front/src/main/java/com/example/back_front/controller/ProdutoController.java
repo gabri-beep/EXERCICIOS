@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/produto")
@@ -26,6 +27,36 @@ public class ProdutoController {
     @GetMapping
     public ResponseEntity<List<Produto>> findAll(){
         return ResponseEntity.ok().body(produtoService.getAll());
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<ProdutoDto> findById(@PathVariable Long id){
+        Optional<ProdutoDto> produtoDto = produtoService.getById(id);
+        if (produtoDto.isPresent()){
+            return ResponseEntity.ok(produtoDto.get());
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<ProdutoDto> update(@PathVariable Long id, @RequestBody ProdutoDto produtoDto){
+        Optional<ProdutoDto> produtoDtoOptional = produtoService.update(id, produtoDto);
+
+        if (produtoDtoOptional.isPresent()){
+            return ResponseEntity.ok(produtoDtoOptional.get());
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id){
+        if (produtoService.delete(id)){
+            return ResponseEntity.noContent().build();
+        } else {
+            return  ResponseEntity.notFound().build();
+        }
     }
 
 }
