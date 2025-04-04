@@ -5,34 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="js/script.js" defer></script>
     <title>Cadastro de Produto</title>
+    <style>
+    </style>
 </head>
 <body>
-    <form id="produtoForm"> 
-        <div class="cadastro">
-            <h1>Cadastrar produto</h1>
-            <hr>
-            <label for="nome">Nome:</label>
-            <input type="text" id="nome" placeholder="Nome do produto">
-            <br>
-            <br>
-            <label for="valor">Valor:</label>
-            <input type="number" id="valor" placeholder="Digite o valor do produto ">
-            <br>
-            <br>
-            <label for="saldo">Saldo:</label>
-            <input type="number" id="saldo" >
-            <br>
-            <br>
-            <label for="saldoMin">Saldo Mínimo:</label>
-            <input type="number" id="saldoMin">
-            <br>
-            <button type="submit">Enviar</button>
-        </div>
+    <header class="links">
+        <a href="atualizar.html">Atualizar produto</a>
+    </header>
+    <form id="formProduto">
+        <h1>Cadastro de produto</h1>
+        <label for="nome">Nome do Produto:</label>
+        <input type="text" id="nome" name="nome" required>
+        <br>
+        <label for="valor">Valor:</label>
+        <input type="number" id="valor" name="valor" step="0.01" required>
+        <br>
+        
+        <label for="saldo">Saldo em Estoque:</label>
+        <input type="number" id="saldo" name="saldo" required>
+        <br>
+       
+        <label for="saldoMinimo">Saldo Mínimo:</label>
+        <input type="number" id="saldoMinimo" name="saldoMinimo" required>
+        <br>
+        <button type="submit">Cadastrar Produto</button>
         <hr>
-        <div class="lista">
-            <h1>Lista de produtos</h1>
-            <button>Carregar produtos</button>
-        </div>
-    </form
+        <h2>Lista de produto</h2>
+        <button type="button" id="carregarProdutos">Carregar produtos</button>
+      </form>
+
+      <ul id="lista"></ul>
 </body>
 </html>
