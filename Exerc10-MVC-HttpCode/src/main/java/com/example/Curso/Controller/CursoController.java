@@ -78,9 +78,9 @@ public class CursoController {
     public ResponseEntity<String> delete(int id){
         Curso cursoBd = repository.getById(id);
         if (cursoBd == null){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuário com ID: " + id + " não encontrado");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Curso com ID: " + id + " não encontrado");
         } else {
-            return ResponseEntity.status(HttpStatus.OK).body("Usuário " + cursoBd.getNome() + " deletado com sucesso");
+            return ResponseEntity.status(HttpStatus.OK).body("Curso " + cursoBd.getNome() + " deletado com sucesso");
         }
     }
 

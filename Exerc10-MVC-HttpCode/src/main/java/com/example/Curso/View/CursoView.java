@@ -22,7 +22,8 @@ public class CursoView {
             @ApiResponse(responseCode = "200", description = "Curso encontrado"),
             @ApiResponse(responseCode = "404", description = "Curso não encontrado")
     })
-    public ResponseEntity<List<Curso>> getCurso(@RequestParam(required = false) String nomeProfessor, @RequestParam(required = false) Integer sala) {
+    public ResponseEntity<List<Curso>> getCurso(@RequestParam(required = false) String nomeProfessor,
+                                                @RequestParam(required = false) Integer sala) {
                 return cursoController.getAll();
 
     }
@@ -52,21 +53,37 @@ public class CursoView {
 
     // esta função fara o mesmo insert que a função a cima, porém com melhores práticas de programação
     @PostMapping("/{idCurso}/alunoMelhorado")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Aluno inserido com sucesso!"),
+            @ApiResponse(responseCode = "400", description = "Erro ao inserir aluno")
+    })
     public ResponseEntity<Curso> insertAlunoMelhorado(@RequestBody Aluno aluno, @PathVariable int idCurso){
         return cursoController.insertAlunoMelhorado(idCurso, aluno);
     }
 
     @PutMapping("/{id}")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Curso atualizado com sucesso"),
+            @ApiResponse(responseCode = "404", description = "Curso não encontrado")
+    })
     public ResponseEntity<Curso> update(@RequestBody Curso curso, @PathVariable int id){
         return cursoController.update(id, curso);
     }
 
     @PutMapping("/{idCurso}/aluno/{idAluno}")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Aluno atualizado com sucesso"),
+            @ApiResponse(responseCode = "404", description = "Aluno não encontrado")
+    })
     public ResponseEntity<String> update(@PathVariable int idCurso, @PathVariable int idAluno, @RequestBody Aluno aluno){
         return cursoController.updateAluno(idCurso, idAluno, aluno);
     }
 
     @DeleteMapping("/{id}")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Curso deletado com sucesso"),
+            @ApiResponse(responseCode = "404", description = "Curso não encontrado")
+    })
     public ResponseEntity<String> delete(@PathVariable int id){
         return cursoController.delete(id);
     }
