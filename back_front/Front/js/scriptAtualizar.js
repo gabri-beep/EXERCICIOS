@@ -38,7 +38,7 @@ async function carregarProdutoPorId(id) {
 
 async function enviarProduto(event) {
     event.preventDefault(); // Evita o envio tradicional do formulário
-    let idProduto = document.getElementById("produtoId").value;
+    let id = document.getElementById("produtoId").value;
     
     // cria objeto para ser enviado
     let formData = {
@@ -49,7 +49,7 @@ async function enviarProduto(event) {
     };
 
     try {
-        let response = await fetch(`http://localhost:8080/produto/${idProduto}`, { // url da requisição / mesma url colocada no Postman
+        let response = await fetch(`http://localhost:8080/produto/${id}`, { // url da requisição / mesma url colocada no Postman
             method: "PUT", // método da requisição
             headers: { "Content-Type": "application/json" }, // informa que um json esta sendo enviado
             // converte objeto em json

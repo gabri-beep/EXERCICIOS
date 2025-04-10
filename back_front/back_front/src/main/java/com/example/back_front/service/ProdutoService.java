@@ -26,7 +26,7 @@ public class ProdutoService {
 
     public ProdutoDto toDto(Produto produto){
         ProdutoDto produtoDto = new ProdutoDto();
-        produtoDto.setIdProduto(produto.getIdProduto());
+        produtoDto.setId(produto.getId());
         produtoDto.setNome(produto.getNome());
         produtoDto.setValor(produto.getValor());
         produtoDto.setSaldo(produtoDto.getSaldo());

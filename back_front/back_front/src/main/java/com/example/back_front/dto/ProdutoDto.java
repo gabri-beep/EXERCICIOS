@@ -2,7 +2,7 @@ package com.example.back_front.dto;
 
 
 public class ProdutoDto {
-    private Long idProduto;
+    private Long id;
     private String nome;
     private  double valor;
     private int saldo;
@@ -11,20 +11,20 @@ public class ProdutoDto {
     public ProdutoDto() {
     }
 
-    public ProdutoDto(Long idProduto, String nome, double valor, int saldo, int saldoMinimo) {
-        this.idProduto = idProduto;
+    public ProdutoDto(Long id, String nome, double valor, int saldo, int saldoMinimo) {
+        this.id = id;
         this.nome = nome;
         this.valor = valor;
         this.saldo = saldo;
         this.saldoMinimo = saldoMinimo;
     }
 
-    public Long getIdProduto() {
-        return idProduto;
+    public Long getId() {
+        return id;
     }
 
-    public void setIdProduto(Long idProduto) {
-        this.idProduto = idProduto;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNome() {

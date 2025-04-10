@@ -10,7 +10,7 @@ import jakarta.persistence.Id;
 public class Produto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idProduto;
+    private Long id;
     private String nome;
     private  double valor;
     private int saldo;
@@ -19,20 +19,20 @@ public class Produto {
     public Produto() {
     }
 
-    public Produto(Long idProduto, String nome, double valor, int saldo, int saldoMinimo) {
-        this.idProduto = idProduto;
+    public Produto(Long id, String nome, double valor, int saldo, int saldoMinimo) {
+        this.id = id;
         this.nome = nome;
         this.valor = valor;
         this.saldo = saldo;
         this.saldoMinimo = saldoMinimo;
     }
 
-    public Long getIdProduto() {
-        return idProduto;
+    public Long getId() {
+        return id;
     }
 
-    public void setIdProduto(Long idProduto) {
-        this.idProduto = idProduto;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNome() {

@@ -56,12 +56,12 @@ async function carregarProdutos() {
       lista.innerHTML = ""; // Limpa a lista antes de adicionar
       data.forEach(produto => {
           let item = document.createElement("li");
-          item.textContent = `ID: ${produto.idProduto} - ${produto.nome} - R$ ${produto.valor} - Saldo: ${produto.saldo} - Saldo Mínimo: ${produto.saldoMinimo}`;
+          item.textContent = `ID: ${produto.id} - ${produto.nome} - R$ ${produto.valor} - Saldo: ${produto.saldo} - Saldo Mínimo: ${produto.saldoMinimo}`;
           let btnDeletar = document.createElement("button")
           btnDeletar.textContent = "Deletar";
           btnDeletar.style.marginLeft = "10px";
           btnDeletar.onclick = function(){
-              deletarProduto(produto.idProduto)
+              deletarProduto(produto.id)
           }
           item.appendChild(btnDeletar);
           lista.appendChild(item);
@@ -72,10 +72,10 @@ async function carregarProdutos() {
 }
 
 // função para deletar o produto
-async function deletarProduto(idProduto) {
+async function deletarProduto(id) {
   if (confirm("Tem certeza que deseja deletar este produto?")) {
       try {
-          let response = await fetch(`http://localhost:8080/produto/${idProduto}`, { // url da requisição / mesma url colocada no Postman
+          let response = await fetch(`http://localhost:8080/produto/${id}`, { // url da requisição / mesma url colocada no Postman
           method: "DELETE", // método da requisição
               headers: { "Content-Type": "application/json" }, // informa que um json esta sendo enviado
           });
