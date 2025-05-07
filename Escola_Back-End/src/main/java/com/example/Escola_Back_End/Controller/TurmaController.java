@@ -59,8 +59,9 @@ public class TurmaController {
     }
 
     @PutMapping("/atualizar/{id}")// end-point para atualizar uma turma, que é necessario o id para buscar (@PathVariable) e também o objeto turmaDTO(@RequestBody) que ja foi criada.
-    /**/
+    //@PathVariable: para extrair o valor id e @RequestBody: para requerir o objeto turmaDTO
     public ResponseEntity<TurmaDTO> update(@PathVariable Long id, @RequestBody TurmaDTO turmaDTO) {
+        // Objeto optional recebe o metodo updateTurma da service
         Optional<TurmaDTO> optional = service.updateTurma(id, turmaDTO);
         // se o objeto existir: "optional.isPresent()"
         if (optional.isPresent()) {
@@ -73,30 +74,43 @@ public class TurmaController {
     }
 
     // Adicionar o 'Aluno' na 'Turma'
-    @PutMapping("/{id}/alunoAdd/{idAluno}")// end-point para atualizar um aluno especifico dentro de uma turma
+    @PutMapping("/{id}/alunoAdd/{idAluno}")/* end-point para adicionar um novo aluno dentro de uma turma, precisando do id da turma para busca-la e o id do aluno
+    para que na service o metodo addAlunoTurma, verifique se o id do aluno existe(retornando false de propósito), assim criando um novo aluno dentro da turma
+    @PathVariable: para extrair o valor idTurma e idAluno */
+    // metodo addAlunoTurma na linha abaixo do tipo String para poder otimizar a resposta http
     public ResponseEntity<String> addAlunoTurma(@PathVariable Long id, @PathVariable Long idAluno){
         if(service.addAlunoTurma(id, idAluno)){
+            //retorna status http 200, com o texto no corpo da resposta
             return ResponseEntity.ok("Aluno adicionado com sucesso");
         }else {
+            // retorna status http 404, com o texto no corpo da resposta, otimizando a resposta
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Aluno ou Professor não encontrado");
         }
     }
 
     // remove aluno da turma
-    @PutMapping("/{id}/alunoRemove/{idAluno}")
+    @PutMapping("/{id}/alunoRemove/{idAluno}")/* end-point para remover um aluno dentro de uma turma, precisando do id da turma para busca-la e o id do aluno
+    para que na service o metodo removeAlunoTurma, verifique se o id do aluno existe(retornando false de propósito), assim criando um novo aluno dentro da turma
+    @PathVariable: para extrair o valor idTurma e idAluno */
     public ResponseEntity<String> removeAlunoTurma(@PathVariable Long id, @PathVariable Long idAluno){
         if(service.removeAlunoTurma(id, idAluno)){
+            //retorna status http 200(sucesso), com o texto no corpo da resposta
             return ResponseEntity.ok("Aluno removido da turma com sucesso");
         }else {
+            // retorna status http 404(erro na requisição, com o texto no corpo da resposta
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Erro ao remover aluno da turma");
         }
     }
 
-    @DeleteMapping("/deletar/{id}")
+    @DeleteMapping("/deletar/{id}")//end-point para deletar uma turma recebendo o id entre chaves na URL para fazer a busca
+    //metodo "delete" do tipo Void, @PathVariable: extrair o valor id
     public ResponseEntity<Void> delete(@PathVariable Long id) {
+        //se o metodo delete da service for verdadeiro
         if (service.delete(id)) {
+            //resposta http 204(noContent)
             return ResponseEntity.noContent().build();
         } else {
+            // retorna http 404(notFound) - não encontrado
             return ResponseEntity.notFound().build();
         }
     }
